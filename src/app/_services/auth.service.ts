@@ -6,12 +6,24 @@ import { User } from '../models/auth.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
-
-  baseUrl: string = "http://3.17.216.66:3000";
+export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
+  baseUrl: string = "http://3.17.216.66:3000";
+
+  storeToken(token: string): void{
+    localStorage.setItem("jwtToken", token);
+  }
+
+  deleteToken(): void{
+    localStorage.removeItem("jwtToken")
+  }
+
+  retrieveToken(): string | null{
+    return localStorage.getItem("jwtToken");
+  }
+  
   // fetchAllBus(): Observable<Bus[]>{
   //   return this.httpClient.get<Bus[]>(this.baseUrl+'/bus');
   // }
@@ -36,8 +48,9 @@ export class AuthServiceService {
     return this.httpClient.post<User>(this.baseUrl+'/users/register', userDetails);
   }
 
-  login(userDetails: User): Observable<User>{
-    return this.httpClient.post<User>(this.baseUrl+'/users/authenticate', userDetails);
+  login(userDetails: any): Observable<any>{
+    console.log(userDetails, 'userDetails')
+    return this.httpClient.post<any>(this.baseUrl+'/users/authenticate', userDetails);
   }
 
   // updateTickets(ticketDetails: Reserve): Observable<Reserve>{
@@ -47,6 +60,5 @@ export class AuthServiceService {
   // fetchTicketDetails(ticketId: number): Observable<Reserve>{
   //   return this.httpClient.get<Reserve>(this.baseUrl+'/tickets/'+ticketId);
   // }
-
 
 }

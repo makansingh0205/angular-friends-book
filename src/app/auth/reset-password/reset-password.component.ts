@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/models/auth.model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
 
   loading:boolean = false;
   returnUrl: string = '/';
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+  resetPasswordForm: FormGroup = new FormGroup({
+    password: new FormControl(''),
+    confirmPassword: new FormControl('')
   });
   submitted:boolean = false;
 
@@ -25,30 +24,26 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute){
   }
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+    this.resetPasswordForm = this.fb.group({
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]]
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get form(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
+    return this.resetPasswordForm.controls;
   }
 
   onSubmit(){
     this.submitted = true
       
-    if (this.loginForm.valid) {
+    if (this.resetPasswordForm.valid) {
       this.loading = true;
-      let userDetails = this.loginForm.value
+      let userDetails = this.resetPasswordForm.value
       this.authService.login(userDetails).subscribe(
         {
-          next: (data: any) => {
-           console.log(data, 'dddd')
-          //  storeToken
-          },
-          // this.router.navigate([this.returnUrl]),
+          next: (data: any) => this.router.navigate([this.returnUrl]),
           error: (err: { message: any; }) => {
             alert(err.message)
             this.loading = false;

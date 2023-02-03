@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/models/auth.model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
+  
   loading:boolean = false;
   returnUrl: string = '/';
-  loginForm: FormGroup = new FormGroup({
+  forgotPasswordForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   });
@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute){
   }
+
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
@@ -33,22 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
   get form(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
+    return this.forgotPasswordForm.controls;
   }
 
   onSubmit(){
     this.submitted = true
       
-    if (this.loginForm.valid) {
+    if (this.forgotPasswordForm.valid) {
       this.loading = true;
-      let userDetails = this.loginForm.value
+      let userDetails = this.forgotPasswordForm.value
       this.authService.login(userDetails).subscribe(
         {
-          next: (data: any) => {
-           console.log(data, 'dddd')
-          //  storeToken
-          },
-          // this.router.navigate([this.returnUrl]),
+          next: (data: any) => this.router.navigate([this.returnUrl]),
           error: (err: { message: any; }) => {
             alert(err.message)
             this.loading = false;
@@ -56,5 +53,7 @@ export class LoginComponent implements OnInit {
           complete: () => console.info('Logged In')
         });
     }
+    
   }
+
 }

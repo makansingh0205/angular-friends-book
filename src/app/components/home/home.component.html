@@ -1,0 +1,121 @@
+<main class="main">
+    <div class="container">
+        <div class="page-wrapper">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="sidebar-info">
+                        <app-profile-card></app-profile-card>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8">
+                    <section class="page-content">
+                        <div class="post-list-wrapper">
+
+                            <!-- add new post -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <form class="w-100">
+                                        <textarea class="form-control pe-4" rows="2" data-autoresize=""
+                                            placeholder="Share your thoughts..."></textarea>
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-primary">Post</button>
+                                </div>
+                            </div>
+                            <!-- add new post end -->
+
+
+                            <!-- post card -->
+                            <div class="card">
+                                <!-- Card header START -->
+                                <div class="card-header border-0 pb-0">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <!-- Avatar -->
+                                            <div class="avatar avatar-story me-2">
+                                                <img class="img-fluid rounded-circle" src="assets/images/user1.jpg"
+                                                    alt="">
+                                            </div>
+                                            <!-- Info -->
+                                            <div class="card-body">
+                                                <h6 class="card-title"> Lori Ferguson</h6>
+                                                <p class="text-small text-muted"> 2hr ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card header END -->
+                                <!-- Card body START -->
+                                <div class="card-body">
+                                    <p>I am thrilled to share that I've completed a graduate certificate course in
+                                        project
+                                        management with the president's honor roll</p>
+                                    <!-- Card img -->
+                                    <img class="card-img" src="assets/images/post1.jpg" alt="Post">
+                                    <!-- Feed react START -->
+                                    <ul class="nav nav-stack py-3 small">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#!"> <i
+                                                    class="bi bi-hand-thumbs-up-fill pe-1"></i>Liked (56)</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#!"> <i class="bi bi-chat-fill pe-1"></i>Comments
+                                                (12)</a>
+                                        </li>
+                                        <!-- Card share action START -->
+                                        <li class="nav-item dropdown ms-sm-auto">
+                                            <a class="nav-link mb-0" href="#" id="cardShareAction"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-reply-fill flip-horizontal ps-1"></i>Share (3)
+                                            </a>
+                                            <!-- Card share action dropdown menu -->
+                                            <ul class="dropdown-menu dropdown-menu-end"
+                                                aria-labelledby="cardShareAction">
+                                                <li><a class="dropdown-item" href="#"> <i
+                                                            class="bi bi-envelope fa-fw pe-2"></i>Send via Direct
+                                                        Message</a></li>
+                                                <li><a class="dropdown-item" href="#"> <i
+                                                            class="bi bi-bookmark-check fa-fw pe-2"></i>Bookmark </a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"> <i
+                                                            class="bi bi-link fa-fw pe-2"></i>Copy link to post</a></li>
+                                                <li><a class="dropdown-item" href="#"> <i
+                                                            class="bi bi-share fa-fw pe-2"></i>Share post via …</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"> <i
+                                                            class="bi bi-pencil-square fa-fw pe-2"></i>Share to News
+                                                        Feed</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Card share action END -->
+                                    </ul>
+                                    <!-- Feed react END -->
+
+                                    <!-- Add comment -->
+                                    <div class="d-flex mb-3">
+                                        <!-- Avatar -->
+                                        <div class="avatar avatar-xs me-2">
+                                            <a href="#!"> <img class="avatar-img rounded-circle"
+                                                    src="assets/images/avatar/12.jpg" alt=""> </a>
+                                        </div>
+                                        <!-- Comment box  -->
+                                        <form class="w-100">
+                                            <textarea data-autoresize="" class="form-control pe-4 bg-light" rows="1"
+                                                placeholder="Add a comment..."></textarea>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Card body END -->
+                            </div>
+                            <!-- post card end -->
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

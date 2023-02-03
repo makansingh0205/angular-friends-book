@@ -2,3 +2,6 @@
 .page-wrapper{
     padding: 60px 0;
 }
+main.main {
+    min-height: 500px;
+}
