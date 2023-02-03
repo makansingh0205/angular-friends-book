@@ -1,20 +1,19 @@
 <section class="page-wrapper">
     <div class="container">
         <div class="d-flex justify-content-center">
-            <div class="card m-3">
-                <h5 class="card-header">Employee Registration Form</h5>
+            <div class="card m-3" style="width: 450px;">
+                <h5 class="card-header">Login Form</h5>
                 <div class="card-body">
                     <form name="form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                         <div class="form-group mb-3">
                             <input type="email" 
                                 name="email" 
-                                placeholder="userName" 
+                                placeholder="Username" 
                                 class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && form['email'].errors }"
                                 formControlName="email">
                                 <div *ngIf="submitted && form['email'].errors" class="invalid-feedback">
-                                    <div *ngIf="form['email'].errors['required']">Email is required</div>
-                                    <div *ngIf="form['email'].errors['email']">Enter a valid email address, e.g., john@example.com</div>
+                                    <div *ngIf="form['email'].errors['required']">Username is required</div>
                                 </div>
                         </div>
                         <div class="form-group mb-3">
@@ -28,9 +27,11 @@
                                     <div *ngIf="form['password'].errors?.['required']">Password is required</div>
                                 </div>
                         </div>
-                        <div class="form-group d-flex justify-content-between">
-                            <a routerLink="register" class="card-link">Register</a>
-                            <button type="submit" class="btn btn-primary mr-1">Login</button>
+                        <div class="form-group d-flex justify-content-between">                            
+                            <button type="submit" class="btn btn-primary mr-1"> 
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Login
+                            </button>
+                            <span>Don't have an account ? <a routerLink="/register" class="card-link">Register</a></span> 
                         </div>
                     </form>
                 </div>
