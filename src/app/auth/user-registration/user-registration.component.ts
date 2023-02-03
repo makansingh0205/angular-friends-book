@@ -1,8 +1,8 @@
 import { Component, Directive, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/auth.model';
-import { AuthService } from 'src/app/_services/auth.service';
+import { User } from 'src/app/_model/users.model';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -22,9 +22,9 @@ export class UserRegistrationComponent implements OnInit{
   submitted:boolean = false;
 
   constructor(private fb: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router){
-      // if (this.authService.currentUserValue) {
+      // if (this.userService.currentUserValue) {
       //   this.router.navigate(['/']);
       // }
   }
@@ -48,7 +48,7 @@ export class UserRegistrationComponent implements OnInit{
     if (this.registerationForm.valid) {
       this.loading = true;
       
-      this.authService.register(this.registerationForm.value).subscribe(
+      this.userService.register(this.registerationForm.value).subscribe(
         {
           next: (data: any) => this.router.navigate(['/login']),
           error: (err: { message: any; }) => {

@@ -1,44 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Posts } from '../_model/posts';
+import { environment } from 'src/environments/environment';
+import { Posts } from '../_model/posts.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
-  
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl: string = "http://3.17.216.66:3000";
-  
-  // fetchAllBus(): Observable<Bus[]>{
-  //   return this.httpClient.get<Bus[]>(this.baseUrl+'/bus');
-  // }
+  baseUrl: string = environment.baseUrl;
 
-  // searchBus(busFromId: number, busToId: number): Observable<Bus[]>{
-  //   return this.httpClient.get<Bus[]>(this.baseUrl+'/bus?busFromId='+busFromId + '&busToId='+busToId);
-  // }
-
-  // fetchABus(id: number): Observable<Bus>{
-  //   return this.httpClient.get<Bus>(this.baseUrl+'/bus/'+id);
-  // }
-
-  // updateBusDetails(id: number, busDetails: Bus): Observable<Seats>{
-  //   return this.httpClient.put<Seats>(this.baseUrl+'/bus/'+id, busDetails);
-  // }
-
-  fetchAllPosts(): Observable<Posts[]>{
-    return this.httpClient.get<Posts[]>(this.baseUrl+'/posts');
+  createAPosts(post: Posts): Observable<Posts[]> {
+    return this.httpClient.post<Posts[]>(this.baseUrl + '/posts/createpost', post);
   }
 
-  // updateTickets(ticketDetails: Reserve): Observable<Reserve>{
-  //   return this.httpClient.put<Reserve>(this.baseUrl+'/tickets', ticketDetails);
-  // }
+  fetchAllPosts(): Observable<Posts[]> {
+    return this.httpClient.get<Posts[]>(this.baseUrl + '/posts');
+  }
 
-  // fetchTicketDetails(ticketId: number): Observable<Reserve>{
-  //   return this.httpClient.get<Reserve>(this.baseUrl+'/tickets/'+ticketId);
-  // }
+  getAPosts(postId: string): Observable<Posts[]> {
+    return this.httpClient.get<Posts[]>(this.baseUrl + '/posts/createpost/' + postId);
+  }
+
+  updateAPosts(updtatedPost: Posts): Observable<Posts[]> {
+    return this.httpClient.put<Posts[]>(this.baseUrl + '/posts/createpost/' + updtatedPost.id, updtatedPost);
+  }
+
+  deleteAPosts(postId: string): Observable<any> {
+    return this.httpClient.delete<Posts>(this.baseUrl + '/posts/createpost/' + postId);
+  }
+
+  fetchAllPostsByUser(userId: string): Observable<Posts[]> {
+    return this.httpClient.post<Posts[]>(this.baseUrl + '/posts/findpostbyuserid', { id: userId });
+  }
+
+  postsBulkUpdate(updatePayload: any): Observable<any> {
+    return this.httpClient.put<any>(this.baseUrl + '/posts/updatemanyposts', updatePayload);
+  }
 
 }

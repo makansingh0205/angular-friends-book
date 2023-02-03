@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/_services/auth.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -19,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
   submitted:boolean = false;
 
   constructor(private fb: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private route: ActivatedRoute){
   }
@@ -41,7 +41,7 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetPasswordForm.valid) {
       this.loading = true;
       let userDetails = this.resetPasswordForm.value
-      this.authService.login(userDetails).subscribe(
+      this.userService.login(userDetails).subscribe(
         {
           next: (data: any) => this.router.navigate([this.returnUrl]),
           error: (err: { message: any; }) => {

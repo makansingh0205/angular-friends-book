@@ -3,5 +3,7 @@ export interface Posts {
     post: string,
     userId: string
     isActive: boolean,
-    id: string
+    id: string,
+    userName: string,
+    createdOn: string
 }

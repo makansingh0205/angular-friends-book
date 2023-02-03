@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/models/auth.model';
-import { AuthService } from 'src/app/_services/auth.service';
+import { User } from 'src/app/_model/users.model';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   submitted:boolean = false;
 
   constructor(private fb: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private route: ActivatedRoute){
   }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loading = true;
       let userDetails = this.loginForm.value
-      this.authService.login(userDetails).subscribe(
+      this.userService.login(userDetails).subscribe(
         {
           next: (data: any) => {
            console.log(data, 'dddd')
