@@ -13,15 +13,19 @@
 
                             <!-- add new post -->
                             <div class="card mb-3">
+                                <form class="w-100" (ngSubmit)="onSubmit()" [formGroup]="postForm">
                                 <div class="card-body">
-                                    <form class="w-100">
+                                  
                                         <textarea class="form-control pe-4" rows="2" data-autoresize=""
-                                            placeholder="Share your thoughts..."></textarea>
-                                    </form>
+                                            placeholder="Share your thoughts..."
+                                            formControlName="post"
+                                            ></textarea>
+                                    
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-primary">Post</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="!postForm.valid">Post</button>
                                 </div>
+                            </form>
                             </div>
                             <!-- add new post end -->
 
