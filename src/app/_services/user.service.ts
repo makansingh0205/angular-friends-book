@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User, Users } from '../_model/users.model';
 import { environment } from 'src/environments/environment';
 
@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+
   constructor(private httpClient: HttpClient) { }
 
   baseUrl: string = environment.baseUrl;
@@ -24,12 +25,21 @@ export class UserService {
     return localStorage.getItem("jwtToken");
   }
 
+  retrieveUser(): string | null {
+    return localStorage.getItem("user");
+  }
+
   register(userDetails: User): Observable<User> {
     return this.httpClient.post<User>(this.baseUrl + '/users/register', userDetails);
   }
 
   login(userDetails: any): Observable<any> {
-    return this.httpClient.post<any>(this.baseUrl + '/users/authenticate', userDetails);
+    return this.httpClient.post<any>(this.baseUrl + '/users/authenticate', userDetails)
+    .pipe(map(user => {
+      localStorage.setItem('jwtToken', user.token);
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
+  }));
   }
 
   fetchAllUsers(): Observable<Users[]> {

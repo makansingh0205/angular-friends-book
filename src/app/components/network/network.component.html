@@ -1,6 +1,6 @@
 <main class="main">
     <div class="container">
-        <div class="page-wrraper">
+        <div class="page-wrapper">
             <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="sidebar-info">
@@ -13,17 +13,19 @@
 
                             <div class="my-3 p-3 bg-body rounded shadow-sm">
                                 <h6 class="border-bottom pb-2 mb-0">Your Network</h6>
-                                <article class="d-flex text-muted pt-3" *ngFor="let friend of friendsList">
+                                <article class="d-flex text-muted pt-3" *ngFor="let friend of myNetwork">
                                     <div class="avatar friends-list me-2">
                                         <img class="img-fluid rounded-circle" src="assets/images/user1.jpg"
                                             alt="">
                                     </div>
                                   <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                     <div class="d-flex justify-content-between">
-                                      <strong class="text-gray-dark">Full Name</strong>
-                                      <button type="button" class="btn btn-sm btn-success">Send Request</button>
+                                      <strong class="text-gray-dark">{{friend.friendId}}</strong>
+                                      <button type="button" 
+                                      [ngClass]="setStatus(friend.status) + ' ' + 'btn btn-sm btn-default'"
+                                      (click)="sendFriendRequest(friend)">{{friend.status}}</button>
                                     </div>
-                                    <span class="d-block">@username</span>
+                                    <span class="d-block">{{friend.createdDate | date}}</span>
                                   </div>
                                 </article>
 

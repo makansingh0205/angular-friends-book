@@ -17,8 +17,8 @@ export class UploadService {
     return this.httpClient.post<any>(this.baseUrl + '/files/uploadfile', formData);
   }
 
-  getAFile(photoId:string): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + '/files/'+photoId, { responseType: "blob"});
+  getAFile(photoId:string) {
+    return this.httpClient.get(this.baseUrl + '/files/'+photoId, { responseType: 'blob'});
   }
 
 }

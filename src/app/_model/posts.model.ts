@@ -1,9 +1,13 @@
 export interface Posts {
-    _id: number,
-    post: string,
-    userId: string
-    isActive: boolean,
-    id: string,
-    userName: string,
-    createdOn: string
+    isActive:boolean,
+    _id:string,
+    post:string,
+    userId:string,
+    userPhotoId:string,
+    userName:string,
+    isAdmin:boolean,
+    profession:string,
+    postImageId:string,
+    createdDate:string,
+    id:string
 }

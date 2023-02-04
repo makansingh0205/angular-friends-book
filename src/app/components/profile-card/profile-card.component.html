@@ -11,11 +11,12 @@
               <div class="text-center">
               <!-- Avatar -->
               <div class="avatar avatar-lg">
-                <img class="img-fluid rounded-circle" src="assets/images/profile-pic.jpg" alt="">
+                <img class="img-fluid rounded-circle" [src]="profileImage" alt="{{userInfo.firstName}}">
               </div>
               <!-- Info -->
-              <h5 class="mb-0 text-primary">Sam Lanson </h5>
-              <small>sam.lanson@gmail.com</small>
+              <h5 class="mb-0 text-primary">{{userInfo.firstName}} {{userInfo.lastName}} </h5>
+              <small>{{userInfo.email}}</small>
+              <p><span class="badge text-bg-primary" *ngIf="userInfo.isActive">Active</span></p>
               <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
             </div>
 

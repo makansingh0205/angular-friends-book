@@ -6,13 +6,15 @@ export interface User{
 }
 
 export interface Users{
-    firstName: string,
-    lastName: string,
-    email: string,
-    gender: string,
-    dob: string,
-    phone: string,
-    city: string,
-    country: string
-    pincode: string
+    isAdmin:boolean,
+    isActive:boolean,
+    _id:string,
+    firstName:string,
+    lastName:string,
+    email:string,
+    dob:string,
+    gender:string,
+    photoId:string,
+    createdDate:string,
+    token: string
 }

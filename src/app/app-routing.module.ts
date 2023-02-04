@@ -4,9 +4,9 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { LoginComponent } from './auth/login/login.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { UserRegistrationComponent } from './auth/user-registration/user-registration.component';
-import { AllUsersComponent } from './components/all-users/all-users.component';
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { NetworkComponent } from './components/network/network.component';
 import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
 import { ProfileComponent } from './components/settings/profile/profile.component';
 
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'friends', component: FriendsListComponent },
-  { path: 'network', component: AllUsersComponent },
+  { path: 'network', component: NetworkComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'change-password', component: ChangePasswordComponent }
 ];

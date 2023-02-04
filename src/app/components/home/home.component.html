@@ -27,7 +27,7 @@
 
 
                             <!-- post card -->
-                            <div class="card">
+                            <div class="card mb-3" *ngFor="let post of allPosts">
                                 <!-- Card header START -->
                                 <div class="card-header border-0 pb-0">
                                     <div class="d-flex align-items-center justify-content-between">
@@ -39,8 +39,8 @@
                                             </div>
                                             <!-- Info -->
                                             <div class="card-body">
-                                                <h6 class="card-title"> Lori Ferguson</h6>
-                                                <p class="text-small text-muted"> 2hr ago</p>
+                                                <h6 class="card-title">{{post.userName}}</h6>
+                                                <p class="text-small text-muted"> {{post.profession}} | 2hr ago</p>
                                             </div>
                                         </div>
                                     </div>
@@ -48,9 +48,7 @@
                                 <!-- Card header END -->
                                 <!-- Card body START -->
                                 <div class="card-body">
-                                    <p>I am thrilled to share that I've completed a graduate certificate course in
-                                        project
-                                        management with the president's honor roll</p>
+                                    <p>{{post.post}}</p>
                                     <!-- Card img -->
                                     <img class="card-img" src="assets/images/post1.jpg" alt="Post">
                                     <!-- Feed react START -->
@@ -69,44 +67,18 @@
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-reply-fill flip-horizontal ps-1"></i>Share (3)
                                             </a>
-                                            <!-- Card share action dropdown menu -->
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="cardShareAction">
-                                                <li><a class="dropdown-item" href="#"> <i
-                                                            class="bi bi-envelope fa-fw pe-2"></i>Send via Direct
-                                                        Message</a></li>
-                                                <li><a class="dropdown-item" href="#"> <i
-                                                            class="bi bi-bookmark-check fa-fw pe-2"></i>Bookmark </a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"> <i
-                                                            class="bi bi-link fa-fw pe-2"></i>Copy link to post</a></li>
-                                                <li><a class="dropdown-item" href="#"> <i
-                                                            class="bi bi-share fa-fw pe-2"></i>Share post via …</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"> <i
-                                                            class="bi bi-pencil-square fa-fw pe-2"></i>Share to News
-                                                        Feed</a></li>
-                                            </ul>
                                         </li>
-                                        <!-- Card share action END -->
-                                    </ul>
-                                    <!-- Feed react END -->
-
+                                        </ul>
+                                           
                                     <!-- Add comment -->
                                     <div class="d-flex mb-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xs me-2">
-                                            <a href="#!"> <img class="avatar-img rounded-circle"
-                                                    src="assets/images/avatar/12.jpg" alt=""> </a>
-                                        </div>
                                         <!-- Comment box  -->
                                         <form class="w-100">
                                             <textarea data-autoresize="" class="form-control pe-4 bg-light" rows="1"
                                                 placeholder="Add a comment..."></textarea>
                                         </form>
                                     </div>
+
                                 </div>
                                 <!-- Card body END -->
                             </div>

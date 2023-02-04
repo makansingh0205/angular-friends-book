@@ -44,11 +44,7 @@ export class LoginComponent implements OnInit {
       let userDetails = this.loginForm.value
       this.userService.login(userDetails).subscribe(
         {
-          next: (data: any) => {
-           console.log(data, 'dddd')
-          //  storeToken
-          },
-          // this.router.navigate([this.returnUrl]),
+          next: (data: any) => this.router.navigate([this.returnUrl]),
           error: (err: { message: any; }) => {
             alert(err.message)
             this.loading = false;

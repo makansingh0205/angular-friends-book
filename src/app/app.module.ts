@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,10 +11,11 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
-import { AllUsersComponent } from './components/all-users/all-users.component';
 import { ProfileComponent } from './components/settings/profile/profile.component';
 import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { NetworkComponent } from './components/network/network.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,11 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     ResetPasswordComponent,
     HomeComponent,
     FriendsListComponent,
-    AllUsersComponent,
+    NetworkComponent,
     ProfileComponent,
     ChangePasswordComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    NetworkComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

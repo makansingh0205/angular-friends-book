@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllUsersComponent } from './all-users.component';
+import { NetworkComponent } from './network.component';
 
-describe('AllUsersComponent', () => {
-  let component: AllUsersComponent;
-  let fixture: ComponentFixture<AllUsersComponent>;
+describe('NetworkComponent', () => {
+  let component: NetworkComponent;
+  let fixture: ComponentFixture<NetworkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllUsersComponent ]
+      declarations: [ NetworkComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AllUsersComponent);
+    fixture = TestBed.createComponent(NetworkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
