@@ -51,7 +51,6 @@ export class UserService {
   }
 
   updateUser(updatedUser: Users, userId:string): Observable<Users> {
-    console.log(updatedUser, 'updatedUser')
     return this.httpClient.put<Users>(this.baseUrl + '/users/' + userId, updatedUser);
   }
 

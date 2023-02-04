@@ -34,6 +34,6 @@ export class ChangePasswordComponent {
 
   onSubmit(){
     this.submitted = true
-    console.log(this.changePasswordForm, 'reactiveform')
+    console.log(this.changePasswordForm, 'changePasswordForm')
   }
 }
