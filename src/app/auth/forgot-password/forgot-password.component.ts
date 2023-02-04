@@ -10,27 +10,19 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  
-  loading:boolean = false;
-  returnUrl: string = '/';
   forgotPasswordForm: FormGroup = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl('')
+    dob: new FormControl('')
   });
   submitted:boolean = false;
 
-  constructor(private fb: FormBuilder,
-    private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute){
+  constructor(private fb: FormBuilder){
   }
-
   ngOnInit(): void {
     this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      dob: ['', [Validators.required]]
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get form(): { [key: string]: AbstractControl } {
@@ -39,21 +31,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true
-      
-    if (this.forgotPasswordForm.valid) {
-      this.loading = true;
-      let userDetails = this.forgotPasswordForm.value
-      this.userService.login(userDetails).subscribe(
-        {
-          next: (data: any) => this.router.navigate([this.returnUrl]),
-          error: (err: { message: any; }) => {
-            alert(err.message)
-            this.loading = false;
-          },
-          complete: () => console.info('Logged In')
-        });
-    }
-    
+    console.log(this.forgotPasswordForm)
   }
 
 }
