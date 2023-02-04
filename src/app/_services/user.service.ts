@@ -50,8 +50,9 @@ export class UserService {
     return this.httpClient.get<Users>(this.baseUrl + '/users/' + userId);
   }
 
-  updateUser(updatedUser: any): Observable<Users> {
-    return this.httpClient.put<any>(this.baseUrl + '/users/' + updatedUser.id, updatedUser);
+  updateUser(updatedUser: Users, userId:string): Observable<Users> {
+    console.log(updatedUser, 'updatedUser')
+    return this.httpClient.put<Users>(this.baseUrl + '/users/' + userId, updatedUser);
   }
 
   findUserByEmail(email: string): Observable<any> {

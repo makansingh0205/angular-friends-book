@@ -4,11 +4,9 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="sidebar-info">
-                        <!-- Navbar START-->
-                        <nav class="navbar navbar-expand-lg mx-0">
+                        <nav class="navbar navbar-expand-lg">
                             <div class="offcanvas offcanvas-start">
-                                <!-- Offcanvas body -->
-                                <div class="offcanvas-body d-block px-2 px-lg-0">
+                                <div class="offcanvas-body d-block">
                                     <!-- Card START -->
                                     <div class="card overflow-hidden">
                                         <div class="card-body">                                            
@@ -46,47 +44,83 @@
                                     </div>
 
                                     <div class="card-body">
-                                      <!-- Form settings START -->
-                                      <form class="row g-3">
-                                        <!-- First name -->
-                                        <div class="col-sm-6 col-lg-4">
-                                          <label class="form-label">First name</label>
-                                          <input type="text" class="form-control" placeholder="" value="Sam">
-                                        </div>
-                                        <!-- Last name -->
-                                        <div class="col-sm-6 col-lg-4">
+                                        <form name="form"  class="row g-3" (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+                                        <div class="col-sm-6 col-lg-6">
+                                            <label class="form-label">First name</label>
+                                            <input type="text" 
+                                                name="firstName" 
+                                                placeholder="First name" 
+                                                class="form-control"
+                                                [readonly]="isEdit"
+                                                [ngClass]="{ 'is-invalid': submitted && form['firstName'].errors }"
+                                                formControlName="firstName">
+                                                <div *ngIf="submitted && form['firstName'].errors" class="invalid-feedback">
+                                                    <div *ngIf="form['firstName'].errors['required']">First name is required</div>
+                                                </div>
+                                        </div>      
+                                        <div class="col-sm-6 col-lg-6">
                                           <label class="form-label">Last name</label>
-                                          <input type="text" class="form-control" placeholder="" value="Lanson">
-                                        </div>
-                                        <!-- Additional name -->
-                                        <div class="col-sm-6 col-lg-4">
-                                          <label class="form-label">Additional name</label>
-                                          <input type="text" class="form-control" placeholder="">
+                                            <input type="text" 
+                                                name="lastName" 
+                                                placeholder="Last name" 
+                                                class="form-control"
+                                                [readonly]="isEdit"
+                                                [ngClass]="{ 'is-invalid': submitted && form['lastName'].errors }"
+                                                formControlName="lastName">
+                                                <div *ngIf="submitted && form['lastName'].errors" class="invalid-feedback">
+                                                    <div *ngIf="form['lastName'].errors['required']">Last name is required</div>
+                                                </div>
                                         </div>
                                         <!-- User name -->
                                         <div class="col-sm-6">
                                           <label class="form-label">User name</label>
-                                          <input type="text" class="form-control" placeholder="" value="@samlanson">
+                                          <input type="email" 
+                                                name="email" 
+                                                placeholder="Email" 
+                                                class="form-control"
+                                                [readonly]="true"
+                                                formControlName="email">
                                         </div>
                                         <!-- Birthday -->
                                         <div class="col-lg-6">
-                                          <label class="form-label">Birthday </label>
-                                          <input type="text" class="form-control flatpickr flatpickr-input" value="12/12/1990" readonly="readonly">
+                                          <label class="form-label">Date of Birth </label>
+                                            <input type="date" 
+                                                name="dob" 
+                                                placeholder="Date of Birth" 
+                                                class="form-control"
+                                                [readonly]="isEdit"
+                                                [ngClass]="{ 'is-invalid': submitted && form['dob'].errors }"
+                                                formControlName="dob">
+                                                <div *ngIf="submitted && form['dob'].errors" class="invalid-feedback">
+                                                    <div *ngIf="form['dob'].errors['required']">Date of birth is required</div>
+                                                </div>
                                         </div>
 
                                         <div class="col-sm-6">
-                                          <label class="form-label">Phone number</label>
-                                          <input type="text" class="form-control" placeholder="" value="(678) 324-1251">
+                                          <label class="form-label">Gender</label>
+                                          <select name="gender" placeholder="Select Gender" class="form-select"
+                                                [ngClass]="{ 'is-invalid': submitted && form['gender'].errors }"
+                                                formControlName="gender" >
+                                                <option selected>Select Gender</option>
+                                                <option value="Male" [selected]="userInfo.gender === 'Male'">Male</option>
+                                                <option value="Female" [selected]="userInfo.gender === 'Female'">Female</option>
+                                            </select>
+                                            <div *ngIf="submitted && form['gender'].errors" class="invalid-feedback">
+                                                <div *ngIf="form['gender'].errors?.['required']">Gender is required</div>
+                                            </div>
                                         </div>
 
-                                        <div class="col-sm-6">
-                                          <label class="form-label">Email</label>
-                                          <input type="text" class="form-control" placeholder="" value="sam@webestica.com">
-                                         </div>
-
-                                        <div class="col-12 text-end">
-                                          <button type="submit" class="btn btn-sm btn-primary mb-0">Save changes</button>
+                                        <div class="col-12 ">
+                                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                          <button type="button" 
+                                          (click)="onEdit()"
+                                          [disabled]="!isEdit"
+                                          class="btn btn-sm btn btn-dark me-md-2">Edit</button>
+                                          <button type="submit" 
+                                          [disabled]="isEdit"
+                                          class="btn btn-sm btn-primary">Save changes</button>
                                         </div>
+                                      </div>
                                       </form>
 
                                     </div>
