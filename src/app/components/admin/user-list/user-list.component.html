@@ -1,0 +1,40 @@
+<main class="main">
+    <div class="container">
+        <div class="page-wrapper">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="sidebar-info">
+                        <app-profile-card></app-profile-card>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8">
+                    <section class="page-content">
+                        <div class="friends-list-wrapper">
+
+                            <div class="my-3 p-3 bg-body rounded shadow-sm">
+                                <h6 class="border-bottom pb-2 mb-0">Your Network</h6>
+                                <article class="d-flex text-muted pt-3" *ngFor="let user of usersList">
+                                    <div class="avatar friends-list me-2">
+                                        <img class="img-fluid rounded-circle" src="assets/images/user1.jpg"
+                                            alt="">
+                                    </div>
+                                  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                    <div class="d-flex justify-content-between">
+                                      <strong class="text-gray-dark">{{user.firstName}} {{user.lastName}}</strong>
+                                      <button type="button" 
+                                      class="btn btn-dark btn-sm"                                      
+                                      (click)="blockUser(user)">Block User</button>
+                                    </div>
+                                    <span class="d-block">{{user.email}} | DOB: {{user.dob | date}} </span>
+                                  </div>
+                                </article>
+
+                              </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

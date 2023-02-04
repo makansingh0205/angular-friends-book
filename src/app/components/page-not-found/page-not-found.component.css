@@ -1,0 +1,7 @@
+.component-wrapper{
+    padding: 10px 30px;
+}
+.component-wrapper .card {
+    padding: 20px;
+    text-align: center;
+}

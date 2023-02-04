@@ -4,12 +4,15 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { LoginComponent } from './auth/login/login.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { UserRegistrationComponent } from './auth/user-registration/user-registration.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { NetworkComponent } from './components/network/network.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
 import { ProfileComponent } from './components/settings/profile/profile.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { RoleGuard } from './_helpers/role.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -21,7 +24,9 @@ const routes: Routes = [
   { path: 'friends', component: FriendsListComponent, canActivate: [AuthGuard] },
   { path: 'network', component: NetworkComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] }
+  { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuard, RoleGuard] },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

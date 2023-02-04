@@ -16,6 +16,8 @@ import { ChangePasswordComponent } from './components/settings/change-password/c
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { NetworkComponent } from './components/network/network.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { NetworkComponent } from './components/network/network.component';
     ProfileComponent,
     ChangePasswordComponent,
     ProfileCardComponent,
-    NetworkComponent
+    NetworkComponent,
+    UserListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
