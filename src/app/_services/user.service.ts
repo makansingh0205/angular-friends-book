@@ -12,6 +12,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   baseUrl: string = environment.baseUrl;
+  isLoggedIn: boolean = false;
 
   storeToken(token: string): void {
     localStorage.setItem("jwtToken", token);
